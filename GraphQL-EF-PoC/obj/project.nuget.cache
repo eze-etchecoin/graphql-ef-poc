@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iihpFHUvnDL5hZaicdBwhxcjFxRZxfrN/Jsqyq/ML9m15UzOg0VB5vENCC0UtnDULabDgkqlrgdzMXVUePofcw==",
+  "dgSpecHash": "tjwDovWdwdDQdJCJwiwq9gOIDT+Pc8fSDdU0SuYIeRyIgdSNSCJf8GVPyB4mtGJM7l1ICk7bghNUFbkZH0YXlw==",
   "success": true,
-  "projectFilePath": "c:\\GitHubRepos\\personal\\graphql-ef-poc\\GraphQL-EF-PoC\\GraphQL-EF-PoC.csproj",
+  "projectFilePath": "C:\\GitHubRepos\\personal\\graphql-ef-poc\\GraphQL-EF-PoC\\GraphQL-EF-PoC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ezequ\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\ezequ\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
