@@ -397,5 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-bin
-obj
+/GraphQL-EF-PoC/obj
+/GraphQL-EF-PoC/bin
