@@ -1,3 +1,4 @@
+using GraphQL.Server.Ui.Voyager;
 using GraphQL_EF_PoC.Data;
 using GraphQL_EF_PoC.GraphQL;
 using Microsoft.EntityFrameworkCore;
@@ -19,5 +20,9 @@ var app = builder.Build();
 app.MapGet("/", () => "Hello World!");
 
 app.MapGraphQL();
+app.UseGraphQLVoyager(options: new VoyagerOptions()
+{
+    GraphQLEndPoint = "/graphql"
+});
 
 app.Run();
