@@ -8,9 +8,9 @@ public class Vehicle : BaseEntity
     public Vehicle()
     {
         Asset = "";
+        Model = new VehicleModel();
     }
 
-    [Required]
     public string Asset { get; set; }
 
     public int Year { get; set; }
@@ -18,5 +18,5 @@ public class Vehicle : BaseEntity
     [Required]
     public VehicleModel Model {get; set;}
 
-    public string Notes { get; set; }
+    public string? Notes { get; set; }
 }
