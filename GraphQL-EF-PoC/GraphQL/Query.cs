@@ -4,7 +4,8 @@ namespace GraphQL_EF_PoC.GraphQL
 {
     public class Query
     {
-        public IQueryable<Vehicle> GetVehicle([Service]AppDbContext context)
+        [UseDbContext(typeof(AppDbContext))]
+        public IQueryable<Vehicle> GetVehicle([ScopedService]AppDbContext context)
         {
             return context.Vehicles;
         }
