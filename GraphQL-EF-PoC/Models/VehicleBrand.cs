@@ -11,4 +11,6 @@ public class VehicleBrand : BaseEntity
     
     [Required]
     public string Name { get; set; }
+
+    public ICollection<VehicleModel> Models { get; set; }
 }
