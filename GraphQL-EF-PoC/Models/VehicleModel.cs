@@ -2,6 +2,7 @@
 
 namespace GraphQL_EF_PoC.Models;
 
+[GraphQLDescription("Represents a vehicle model.")]
 public class VehicleModel : BaseEntity
 {
     [Required]

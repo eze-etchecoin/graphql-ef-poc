@@ -1,6 +1,7 @@
 using GraphQL.Server.Ui.Voyager;
 using GraphQL_EF_PoC.Data;
 using GraphQL_EF_PoC.GraphQL;
+using GraphQL_EF_PoC.GraphQL.Vehicles;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,15 +14,17 @@ builder.Services.AddPooledDbContextFactory<AppDbContext>(opt =>
 builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
+    .AddType<VehicleType>()
+    .AddType<VehicleBrandType>()
     .AddProjections();
-
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
 app.MapGraphQL();
-app.UseGraphQLVoyager(options: new VoyagerOptions()
+app.UseGraphQLVoyager("/graphql-voyager",
+    options: new VoyagerOptions()
 {
     GraphQLEndPoint = "/graphql"
 });
