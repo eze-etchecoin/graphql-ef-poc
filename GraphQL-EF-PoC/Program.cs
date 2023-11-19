@@ -16,6 +16,7 @@ builder.Services
     .AddQueryType<Query>()
     .AddType<VehicleType>()
     .AddType<VehicleBrandType>()
+    .AddType<VehicleModelType>()
     .AddProjections();
 
 var app = builder.Build();

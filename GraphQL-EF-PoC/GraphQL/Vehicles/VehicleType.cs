@@ -1,4 +1,7 @@
-﻿namespace GraphQL_EF_PoC.GraphQL.Vehicles
+﻿using GraphQL_EF_PoC.Data;
+using GraphQL_EF_PoC.Models;
+
+namespace GraphQL_EF_PoC.GraphQL.Vehicles
 {
     public class VehicleType : ObjectType<Vehicle>
     {
@@ -25,6 +28,20 @@
             descriptor
                 .Field(v => v.Notes)
                 .Description("The notes for the vehicle.");
+
+            descriptor
+                .Field(v => v.Model)
+                .ResolveWith<Resolvers>(v => v.GetModel(default!, default!))
+                .UseDbContext<AppDbContext>()
+                .Description("The model of the vehicle.");
+        }
+
+        private class Resolvers
+        {
+            public VehicleModel GetModel(Vehicle vehicle, [ScopedService] AppDbContext context)
+            {
+                return context.Models.FirstOrDefault(m => m.Id == vehicle.Model.Id);
+            }
         }
     }
 }
