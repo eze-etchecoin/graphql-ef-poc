@@ -17,7 +17,9 @@ builder.Services
     .AddType<VehicleType>()
     .AddType<VehicleBrandType>()
     .AddType<VehicleModelType>()
-    .AddProjections();
+    .AddProjections()
+    .AddFiltering()
+    .AddSorting();
 
 var app = builder.Build();
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GraphQL-EF-PoC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5671b6a4e4ca2df46dbee606e7858d6e7c1a1c43")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0a7db954b624224a54ec656cdbbef1eba57e262")]
 [assembly: System.Reflection.AssemblyProductAttribute("GraphQL-EF-PoC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GraphQL-EF-PoC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
