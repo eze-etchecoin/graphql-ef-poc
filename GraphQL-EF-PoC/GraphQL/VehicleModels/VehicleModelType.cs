@@ -1,7 +1,7 @@
 ﻿using GraphQL_EF_PoC.Data;
 using GraphQL_EF_PoC.Models;
 
-namespace GraphQL_EF_PoC.GraphQL.Vehicles
+namespace GraphQL_EF_PoC.GraphQL.VehicleModels
 {
     public class VehicleModelType : ObjectType<VehicleModel>
     {

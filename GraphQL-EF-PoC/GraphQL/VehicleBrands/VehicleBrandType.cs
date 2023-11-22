@@ -1,7 +1,7 @@
 ﻿using GraphQL_EF_PoC.Data;
 using GraphQL_EF_PoC.Models;
 
-namespace GraphQL_EF_PoC.GraphQL.Vehicles
+namespace GraphQL_EF_PoC.GraphQL.VehicleBrands
 {
     public class VehicleBrandType : ObjectType<VehicleBrand>
     {
@@ -15,7 +15,7 @@ namespace GraphQL_EF_PoC.GraphQL.Vehicles
                 .UseDbContext<AppDbContext>()
                 .Description("This is the list of models for this brand.");
         }
-        
+
         private class Resolvers
         {
             public IQueryable<VehicleModel> GetModels(VehicleBrand brand, [ScopedService] AppDbContext context)

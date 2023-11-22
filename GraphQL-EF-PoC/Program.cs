@@ -1,6 +1,8 @@
 using GraphQL.Server.Ui.Voyager;
 using GraphQL_EF_PoC.Data;
 using GraphQL_EF_PoC.GraphQL;
+using GraphQL_EF_PoC.GraphQL.VehicleBrands;
+using GraphQL_EF_PoC.GraphQL.VehicleModels;
 using GraphQL_EF_PoC.GraphQL.Vehicles;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +16,7 @@ builder.Services.AddPooledDbContextFactory<AppDbContext>(opt =>
 builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
+    .AddMutationType<Mutation>()
     .AddType<VehicleType>()
     .AddType<VehicleBrandType>()
     .AddType<VehicleModelType>()
