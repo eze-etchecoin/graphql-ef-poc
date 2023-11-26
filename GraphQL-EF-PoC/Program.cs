@@ -17,16 +17,20 @@ builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
+    .AddSubscriptionType<Subscription>()
     .AddType<VehicleType>()
     .AddType<VehicleBrandType>()
     .AddType<VehicleModelType>()
     .AddProjections()
     .AddFiltering()
-    .AddSorting();
+    .AddSorting()
+    .AddInMemorySubscriptions();
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
+
+app.UseWebSockets();
 
 app.MapGraphQL();
 app.UseGraphQLVoyager("/graphql-voyager",

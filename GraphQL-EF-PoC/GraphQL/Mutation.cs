@@ -3,6 +3,7 @@ using GraphQL_EF_PoC.GraphQL.VehicleBrands;
 using GraphQL_EF_PoC.GraphQL.VehicleModels;
 using GraphQL_EF_PoC.GraphQL.Vehicles;
 using GraphQL_EF_PoC.Models;
+using HotChocolate.Subscriptions;
 
 namespace GraphQL_EF_PoC.GraphQL
 {
@@ -11,7 +12,9 @@ namespace GraphQL_EF_PoC.GraphQL
         [UseDbContext(typeof(AppDbContext))]
         public async Task<AddVehiclePayload> AddVehicleAsync(
             AddVehicleInput input,
-            [ScopedService] AppDbContext context)
+            [ScopedService] AppDbContext context,
+            [Service] ITopicEventSender eventSender,
+            CancellationToken cancellationToken)
         {
             var vehicleModel = await context.Models.FindAsync(input.ModelId) ??
                 throw new ArgumentException("Invalid model id");
@@ -27,15 +30,17 @@ namespace GraphQL_EF_PoC.GraphQL
             context.Vehicles.Add(vehicle);
             await context.SaveChangesAsync();
 
-            //await eventSender.SendAsync(nameof(Subscription.OnVehicleAdded), vehicle, cancellationToken);
+            await eventSender.SendAsync(nameof(Subscription.OnVehicleAdded), vehicle, cancellationToken);
 
             return new AddVehiclePayload(vehicle);
         }
 
         [UseDbContext(typeof(AppDbContext))]
         public async Task<AddVehicleBrandPayload> AddVehicleBrandAsync(
-                       AddVehicleBrandInput input,
-                                  [ScopedService] AppDbContext context)
+            AddVehicleBrandInput input,
+            [ScopedService] AppDbContext context,
+            [Service] ITopicEventSender eventSender,
+            CancellationToken cancellationToken)
         {
             var vehicleBrand = new VehicleBrand
             {
@@ -45,7 +50,7 @@ namespace GraphQL_EF_PoC.GraphQL
             context.Brands.Add(vehicleBrand);
             await context.SaveChangesAsync();
 
-            //await eventSender.SendAsync(nameof(Subscription.OnVehicleBrandAdded), vehicleBrand, cancellationToken);
+            await eventSender.SendAsync(nameof(Subscription.OnVehicleBrandAdded), vehicleBrand, cancellationToken);
 
             return new AddVehicleBrandPayload(vehicleBrand);
         }
@@ -53,7 +58,9 @@ namespace GraphQL_EF_PoC.GraphQL
         [UseDbContext(typeof(AppDbContext))]
         public async Task<AddVehicleModelPayload> AddVehicleModelAsync(
             AddVehicleModelInput input,
-            [ScopedService] AppDbContext context)
+            [ScopedService] AppDbContext context,
+            [Service] ITopicEventSender eventSender,
+            CancellationToken cancellationToken)
         {
             var vehicleBrand = await context.Brands.FindAsync(input.BrandId) ??
                 throw new ArgumentException("Invalid brand id");
@@ -67,7 +74,7 @@ namespace GraphQL_EF_PoC.GraphQL
             context.Models.Add(vehicleModel);
             await context.SaveChangesAsync();
 
-            //await eventSender.SendAsync(nameof(Subscription.OnVehicleModelAdded), vehicleModel, cancellationToken);
+            await eventSender.SendAsync(nameof(Subscription.OnVehicleModelAdded), vehicleModel, cancellationToken);
 
             return new AddVehicleModelPayload(vehicleModel);
         }
